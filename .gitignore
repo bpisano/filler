@@ -2,4 +2,5 @@
 *.out
 *.o
 *.swp
+*.filler
 resources/
