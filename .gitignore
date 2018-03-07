@@ -3,4 +3,5 @@
 *.o
 *.swp
 *.filler
+*.trace
 resources/

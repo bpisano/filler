@@ -6,14 +6,16 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/03/01 18:27:48 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/03/01 18:35:30 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/07 18:23:15 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME = bpisano.filler
 
-SRC = sources/filler.c		\
+SRC = sources/filler.c			\
+	  sources/data_manager.c	\
+	  sources/map_manager.c		\
 
 OBJECTS = $(SRC:.c=.o)
 
