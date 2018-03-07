@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:44 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 19:35:03 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 20:24:42 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,17 @@ typedef struct	s_data
 	int			p2_max_y;
 }				t_data;
 
+typedef struct	s_piece
+{
+	int			box_w;
+	int			box_h;
+	int			width;
+	int			height;
+	char		**map;
+}				t_piece;
+
 void			skip_next_line(const int fd);
+void			read_parameters(int *p1, int *p2);
 
 void			init_data(t_data *data);
 

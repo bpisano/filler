@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 13:45:05 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 19:35:13 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 20:12:24 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,11 +43,13 @@ void	set_player(t_data *data)
 		if (line[i] == '1')
 		{
 			data->player = 'O';
+			free(line);
 			return ;
 		}
 		if (line[i] == '2')
 		{
 			data->player = 'X';
+			free(line);
 			return ;
 		}
 		i++;
@@ -57,19 +59,12 @@ void	set_player(t_data *data)
 
 void	set_board_size(t_data *data)
 {
-	int		i;
-	char	*line;
+	int		width;
+	int		height;
 
-	i = 0;
-	get_next_line(0, &line);
-	while (!ft_isdigit(line[i]))
-		i++;
-	data->map_h = ft_atoi(line + i);
-	while (ft_isdigit(line[i]))
-		i++;
-	i++;
-	data->map_w = ft_atoi(line + i);
-	free(line);
+	read_parameters(&width, &height);
+	data->map_h = width;
+	data->map_w = height;
 }
 
 void	init_data(t_data *data)

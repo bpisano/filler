@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   filler.c                                         .::    .:/ .      .::   */
+/*   input_manager.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/01 18:31:06 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 20:18:34 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/07 20:05:58 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/07 20:09:35 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	print_map(t_data *data)
+void	skip_next_line(const int fd)
 {
-	int		i;
+	char	*line;
 
-	printf("\nMAP\n");
-	i = 0;
-	while (i < data->map_h)
-	{
-		printf("%s\n", (data->map)[i]);
-		i++;
-	}
+	get_next_line(fd, &line);
+	free(line);
 }
 
-int		main(void)
+void	read_parameters(int *p1, int *p2)
 {
-	t_data	data;
-	t_piece	piece;
+	int		i;
+	char	*line;
 
-	init_data(&data);
-	while (skip_next_line(0))
-	{
-		set_map(&data);
-		set_piece(&piece);
-	}
-	return (0);
+	i = 0;
+	get_next_line(0, &line);
+	while (!ft_isdigit(line[i]))
+		i++;
+	*p1 = ft_atoi(line + i);
+	while (ft_isdigit(line[i]))
+		i++;
+	i++;
+	*p2 = ft_atoi(line + i);
+	free(line);
 }
