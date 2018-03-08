@@ -6,24 +6,21 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:06 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 20:18:34 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/08 12:40:04 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	print_map(t_data *data)
+void	print_map(char **map, int height)
 {
 	int		i;
 
 	printf("\nMAP\n");
 	i = 0;
-	while (i < data->map_h)
-	{
-		printf("%s\n", (data->map)[i]);
-		i++;
-	}
+	while (i < height)
+		ft_printf("%s\n", map[i++]);
 }
 
 int		main(void)
@@ -35,7 +32,7 @@ int		main(void)
 	while (skip_next_line(0))
 	{
 		set_map(&data);
-		set_piece(&piece);
+		set_piece(&data, &piece);
 	}
 	return (0);
 }
