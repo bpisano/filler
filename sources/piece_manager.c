@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:15:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/08 12:27:44 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/08 17:33:08 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,4 +47,49 @@ void	set_piece(t_data *data, t_piece *piece)
 	}
 	(piece->map)[i] = NULL;
 	data->piece = piece;
+}
+
+int		can_place(t_data *d, t_piece *p, int x, int y)
+{
+	int		cx;
+	int		cy;
+	int		contact;
+
+	if (x + p->width > d->map_w || x + p->height > d->map_h)
+		return (0);
+	contact = 0;
+	cy = y;
+	while (cy < p->height)
+	{
+		cx = x;
+		while (cx < p->width)
+		{
+			if ((p->map)[cy][cx] != '.' && (d->map)[cy][cx] != d->player)
+				return (0);
+			if ((p->map)[cy][cx] == '*' && (d->map)[cy][cx] == d->player)
+				contact++;
+			cx++;
+		}
+		cy++;
+	}
+	return (contact == 1);
+}
+
+void	place(t_data *d, t_piece *p, int x, int y)
+{
+	int		cx;
+	int		cy;
+
+	cy = y;
+	while (cy < p->height)
+	{
+		cx = x;
+		while (cx < p->width)
+		{
+			if ((p->map)[cy][cx] != '.')
+				(d->map)[cy][cx] = (p->map)[cy][cx];
+			cx++;
+		}
+		cy++;
+	}
 }
