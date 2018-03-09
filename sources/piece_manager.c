@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:15:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/08 17:33:08 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/09 15:48:11 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ void	set_piece_size(t_piece *piece)
 	int		width;
 	int		height;
 
-	read_parameters(&width, &height);
+	read_parameters(&height, &width);
 	piece->width = width;
 	piece->height = height;
 }
@@ -55,41 +55,25 @@ int		can_place(t_data *d, t_piece *p, int x, int y)
 	int		cy;
 	int		contact;
 
+
 	if (x + p->width > d->map_w || x + p->height > d->map_h)
 		return (0);
 	contact = 0;
 	cy = y;
-	while (cy < p->height)
+	while (cy < p->height + y)
 	{
 		cx = x;
-		while (cx < p->width)
+		while (cx < p->width + x)
 		{
-			if ((p->map)[cy][cx] != '.' && (d->map)[cy][cx] != d->player)
-				return (0);
-			if ((p->map)[cy][cx] == '*' && (d->map)[cy][cx] == d->player)
+			if ((p->map)[cy - y][cx - x] == '*'
+					&& (d->map)[cy][cx] == d->p1)
 				contact++;
+			else if ((p->map)[cy - y][cx - x] == '*'
+					&& (d->map)[cy][cx] == d->p2)
+				return (0);
 			cx++;
 		}
 		cy++;
 	}
 	return (contact == 1);
-}
-
-void	place(t_data *d, t_piece *p, int x, int y)
-{
-	int		cx;
-	int		cy;
-
-	cy = y;
-	while (cy < p->height)
-	{
-		cx = x;
-		while (cx < p->width)
-		{
-			if ((p->map)[cy][cx] != '.')
-				(d->map)[cy][cx] = (p->map)[cy][cx];
-			cx++;
-		}
-		cy++;
-	}
 }

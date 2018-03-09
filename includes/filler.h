@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:44 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/08 17:30:22 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/09 14:30:00 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,8 @@ typedef struct	s_piece
 typedef struct	s_data
 {
 	t_piece		*piece;
-	char		player;
+	char		p1;
+	char		p2;
 	char		**map;
 	char		step;
 	int			map_w;
@@ -58,8 +59,8 @@ void			init_data(t_data *data);
 void			set_map(t_data *data);
 void			set_piece(t_data *data, t_piece *piece);
 int				can_place(t_data *d, t_piece *p, int x, int y);
-void			place(t_data *data, t_piece *p, int x, int y);
 
-void			move(t_data *data);
+void			play(t_data *data);
+void			move(t_data *data, int *x, int *y);
 
 #endif
