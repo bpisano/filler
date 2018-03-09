@@ -56,7 +56,7 @@ int		can_place(t_data *d, t_piece *p, int x, int y)
 	int		contact;
 
 
-	if (x + p->width > d->map_w || x + p->height > d->map_h)
+	if (x + p->width > d->map_w || y + p->height > d->map_h)
 		return (0);
 	contact = 0;
 	cy = y;

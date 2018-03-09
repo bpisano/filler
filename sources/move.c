@@ -56,7 +56,7 @@ void	get_position(t_data *d, t_square *s, int *px, int *py)
 	{
 		x = s->x;
 		while (x < s->width + s->x)
-		{	
+		{
 			if (can_place(d, d->piece, x, y))
 			{
 				if ((ev = eval(d, x, y)) < min_eval)
@@ -64,7 +64,7 @@ void	get_position(t_data *d, t_square *s, int *px, int *py)
 					min_eval = ev;
 					*px = x;
 					*py = y;
-				}
+				}	
 			}
 			x++;
 		}
