@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/08 15:36:40 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 20:11:06 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 21:11:12 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,25 @@ int		distance(int x1, int y1, int x2, int y2)
 	return (dx + dy);
 }
 
+int		distance_nearest_p2(t_data *d, int x, int y)
+{
+	int			cx;
+	int			cy;
+	int			dist;
+
+	dist = 0;
+	cy = -1;
+	while (++cy < (d->piece)->height)
+	{
+		cx = -1;
+		while (++cx < (d->piece)->width)
+		{
+			if (((d->piece)->map)[cy][cx] == '*')
+				dist += distance(x, y, d->p_x + cx, d->p_y + cy);
+		}
+	}
+	return (dist);
+}
 
 int		eval(t_data *d)
 {
@@ -84,6 +103,6 @@ void	play(t_data *d)
 
 	x = -1;
 	y = -1;
-	get_place_position(d, &x, &y);	
+	get_place_position(d, &x, &y);
 	ft_printf("%d %d\n", y, x);
 }

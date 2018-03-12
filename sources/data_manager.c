@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 13:45:05 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 19:22:15 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 21:17:08 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ void	new_data(t_data *new)
 	new->p1 = 0;
 	new->p2 = 0;
 	new->map = NULL;
-	new->step = 1;
+	new->piece = NULL;
 	new->map_w = 0;
 	new->map_h = 0;
 	new->turn = 0;
@@ -26,12 +26,22 @@ void	new_data(t_data *new)
 	new->p1_y = 0;
 	new->p2_x = 0;
 	new->p2_y = 0;
-	new->p2_min_x = 1000;
-	new->p2_min_y = 1000;
+	new->p2_min_x = EVAL_MAX;
+	new->p2_min_y = EVAL_MAX;
 	new->p2_max_x = 0;
 	new->p2_max_y = 0;
 	new->p_x = -1;
 	new->p_y = -1;
+}
+
+void	free_data(t_data *d)
+{
+	int		i;
+
+	i = 0;
+	while ((d->map)[i])
+		free((d->map)[i++]);
+	free(d->map);
 }
 
 void	set_player(t_data *data)

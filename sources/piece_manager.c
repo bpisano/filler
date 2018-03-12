@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:15:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 20:14:41 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 21:15:18 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,16 @@ void	new_piece(t_piece *new)
 	new->width = 0;
 	new->height = 0;
 	new->map = NULL;
+}
+
+void	free_piece(t_piece *p)
+{
+	int		i;
+
+	i = 0;
+	while ((p->map)[i])
+		free((p->map)[i++]);
+	free(p->map);
 }
 
 void	set_piece_size(t_piece *piece)
@@ -43,7 +53,8 @@ void	set_piece(t_data *data, t_piece *piece)
 	while (i < piece->height)
 	{
 		get_next_line(0, &line);
-		(piece->map)[i++] = line;
+		(piece->map)[i++] = ft_strdup(line);
+		free(line);
 	}
 	(piece->map)[i] = NULL;
 	data->piece = piece;
@@ -76,24 +87,4 @@ int		can_place(t_data *d, t_piece *p, int x, int y)
 		cy++;
 	}
 	return (contact == 1);
-}
-
-int		distance_nearest_p2(t_data *d, int x, int y)
-{
-	int			cx;
-	int			cy;
-	int			dist;
-
-	dist = 0;
-	cy = -1;
-	while (++cy < (d->piece)->height)
-	{
-		cx = -1;
-		while (++cx < (d->piece)->width)
-		{
-			if (((d->piece)->map)[cy][cx] == '*')
-				dist += distance(x, y, d->p_x + cx, d->p_y + cy);
-		}
-	}
-	return (dist);
 }
