@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:15:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/09 15:48:11 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 18:40:17 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,4 +76,27 @@ int		can_place(t_data *d, t_piece *p, int x, int y)
 		cy++;
 	}
 	return (contact == 1);
+}
+
+int		distance_nearest_p2(t_data *d, int x, int y)
+{
+	int			cx;
+	int			cy;
+	int			dist;
+
+	dist = 0;
+	while (++dist < 20)
+	{
+		cy = y - dist < 0 ? -1 : y - dist - 1;
+		while (++cy < (y + dist >= d->map_h ? d->map_h - 1 : y + dist))
+		{
+			cx = x - dist < 0 ? -1 : x - dist - 1;
+			while (++cx < (x + dist >= d->map_w ? d->map_w - 1 : x + dist))
+			{
+				if ((d->map)[cy][cx] == d->p2)
+					return (dist);
+			}
+		}
+	}
+	return (25);
 }

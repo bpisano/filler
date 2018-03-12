@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/03/01 18:27:48 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/03/09 13:07:16 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/12 12:02:47 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,6 +18,7 @@ SRC = sources/filler.c			\
 	  sources/data_manager.c	\
 	  sources/map_manager.c		\
 	  sources/piece_manager.c	\
+	  sources/square_manager.c	\
 	  sources/play.c			\
 	  sources/move.c			\
 
