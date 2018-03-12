@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:44 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 17:11:26 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 20:08:39 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 
 # include "libft.h"
 
-# define EVAL_MAX 10000
+# define EVAL_MAX 1000000000
 
 typedef struct	s_square
 {
@@ -51,8 +51,8 @@ typedef struct	s_data
 	int			p2_min_y;
 	int			p2_max_x;
 	int			p2_max_y;
-	int			(*eval[2])(struct s_data *, int, int);
-	void		(*square[2])(struct s_data *, t_square *s);
+	int			p_x;
+	int			p_y;
 }				t_data;
 
 int				skip_next_line(const int fd);
@@ -66,9 +66,6 @@ int				can_place(t_data *d, t_piece *p, int x, int y);
 int				distance_nearest_p2(t_data *d, int x, int y);
 
 void			play(t_data *data);
-void			move(t_data *data, int *x, int *y);
-int				move_eval(t_data *d, int x, int y);
-int				circle_eval(t_data *d, int x, int y);
 int				distance(int x1, int y1, int x2, int y2);
 void			set_move_square(t_data *d, t_square *s);
 void			set_circle_square(t_data *d, t_square *s);

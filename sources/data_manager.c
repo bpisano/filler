@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 13:45:05 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 18:42:06 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 19:22:15 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,10 +30,8 @@ void	new_data(t_data *new)
 	new->p2_min_y = 1000;
 	new->p2_max_x = 0;
 	new->p2_max_y = 0;
-	(new->eval)[0] = move_eval;
-	(new->eval)[1] = circle_eval;
-	(new->square)[0] = set_move_square;
-	(new->square)[1] = set_map_square;
+	new->p_x = -1;
+	new->p_y = -1;
 }
 
 void	set_player(t_data *data)
