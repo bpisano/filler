@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:44 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:01:03 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/13 12:17:12 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,10 @@ typedef struct	s_piece
 {
 	int			width;
 	int			height;
+	int			min_x;
+	int			min_y;
+	int			max_x;
+	int			max_y;
 	char		**map;
 }				t_piece;
 

@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/08 15:36:40 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:11:12 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/13 12:27:29 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,11 +30,11 @@ int		distance_nearest_p2(t_data *d, int x, int y)
 	int			dist;
 
 	dist = 0;
-	cy = -1;
-	while (++cy < (d->piece)->height)
+	cy = (d->piece)->min_y - 1;
+	while (++cy <= (d->piece)->max_y)
 	{
-		cx = -1;
-		while (++cx < (d->piece)->width)
+		cx = (d->piece)->min_x - 1;
+		while (++cx <= (d->piece)->max_x)
 		{
 			if (((d->piece)->map)[cy][cx] == '*')
 				dist += distance(x, y, d->p_x + cx, d->p_y + cy);
@@ -51,11 +51,11 @@ int		eval(t_data *d)
 	int		min_dist;
 
 	min_dist = EVAL_MAX;
-	y = -1;
-	while (++y < d->map_h)
+	y = d->p2_min_y - 1;
+	while (++y <= d->p2_max_y)
 	{
-		x = -1;
-		while (++x < d->map_w)
+		x = d->p2_min_x - 1;
+		while (++x <= d->p2_max_x)
 		{
 			if ((d->map)[y][x] == d->p2)
 			{	
@@ -76,10 +76,10 @@ void	get_place_position(t_data *d, int *px, int *py)
 
 	min_eval = EVAL_MAX;
 	y = -1;
-	while (++y < d->map_h)
+	while (++y < d->map_h - (d->piece)->height - 1)
 	{
 		x = -1;
-		while (++x < d->map_w)
+		while (++x < d->map_w - (d->piece)->width - 1)
 		{
 			if (can_place(d, d->piece, x, y))
 			{

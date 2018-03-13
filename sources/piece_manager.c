@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:15:56 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:15:18 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/13 12:27:31 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,10 @@ void	new_piece(t_piece *new)
 {
 	new->width = 0;
 	new->height = 0;
+	new->min_x = EVAL_MAX;
+	new->min_y = EVAL_MAX;
+	new->max_x = 0;
+	new->max_y = 0;
 	new->map = NULL;
 }
 
@@ -32,21 +36,37 @@ void	free_piece(t_piece *p)
 
 void	set_piece_size(t_piece *piece)
 {
-	int		width;
-	int		height;
+	int		x;
+	int		y;
 
-	read_parameters(&height, &width);
-	piece->width = width;
-	piece->height = height;
+	y = -1;
+	while (++y < piece->height)
+	{
+		x = -1;
+		while (++x < piece->width)
+		{
+			if ((piece->map)[y][x] == '*')
+			{
+				piece->min_x = x < piece->min_x ? x : piece->min_x;
+				piece->min_y = y < piece->min_y ? y : piece->min_y;
+				piece->max_x = x > piece->max_x ? x : piece->max_x;
+				piece->max_y = y > piece->max_y ? y : piece->max_y;
+			}
+		}
+	}
 }
 
 void	set_piece(t_data *data, t_piece *piece)
 {
 	int		i;
+	int		width;
+	int		height;
 	char	*line;
 
 	new_piece(piece);
-	set_piece_size(piece);
+	read_parameters(&height, &width);
+	piece->width = width;
+	piece->height = height;
 	if (!(piece->map = (char **)malloc(sizeof(char *) * (piece->height + 1))))
 		return ;
 	i = 0;
@@ -57,6 +77,7 @@ void	set_piece(t_data *data, t_piece *piece)
 		free(line);
 	}
 	(piece->map)[i] = NULL;
+	set_piece_size(piece);
 	data->piece = piece;
 }
 
