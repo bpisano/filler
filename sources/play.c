@@ -76,10 +76,10 @@ void	get_place_position(t_data *d, int *px, int *py)
 
 	min_eval = EVAL_MAX;
 	y = -1;
-	while (++y < d->map_h - (d->piece)->height - 1)
+	while (++y <= d->map_h - (d->piece)->height)
 	{
 		x = -1;
-		while (++x < d->map_w - (d->piece)->width - 1)
+		while (++x <= d->map_w - (d->piece)->width)
 		{
 			if (can_place(d, d->piece, x, y))
 			{

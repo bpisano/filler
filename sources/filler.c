@@ -17,7 +17,7 @@ int		main(void)
 {
 	t_data	data;
 	t_piece	piece;
-
+	
 	init_data(&data);
 	while (data.turn == 0 ? 1 : skip_next_line(0))
 	{
@@ -25,8 +25,8 @@ int		main(void)
 		set_piece(&data, &piece);
 		play(&data);
 		(data.turn)++;
-		free_piece(&piece);
+		//free_piece(&piece);
 	}
-	free_data(&data);
+	//free_data(&data);
 	return (0);
 }

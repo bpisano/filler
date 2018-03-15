@@ -75,7 +75,7 @@ void	set_map(t_data *data)
 		map[y] = ft_strdup(ft_strupcase(line + x));
 		set_player_position(data, map[y], y);
 		set_player_square(data, map[y], y);
-		free(line);
+		//free(line);
 	}
 	map[y] = NULL;
 	data->map ? free(data->map) : data->map;

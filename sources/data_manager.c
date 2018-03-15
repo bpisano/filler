@@ -67,7 +67,7 @@ void	set_player(t_data *data)
 		}
 		i++;
 	}
-	free(line);
+	//free(line);
 }
 
 void	set_board_size(t_data *data)
@@ -82,7 +82,7 @@ void	set_board_size(t_data *data)
 
 void	init_data(t_data *data)
 {
-	new_data(data);
+	new_data(data);	
 	set_player(data);
 	set_board_size(data);
 }

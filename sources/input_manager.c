@@ -19,8 +19,8 @@ int		skip_next_line(const int fd)
 	char	*line;
 
 	ret = get_next_line(fd, &line);
-	if (ret != -1)
-		free(line);
+	//if (ret != -1)
+		//free(line);
 	return (ret);
 }
 
@@ -38,5 +38,5 @@ void	read_parameters(int *p1, int *p2)
 		i++;
 	i++;
 	*p2 = ft_atoi(line + i);
-	free(line);
+	//free(line);
 }
