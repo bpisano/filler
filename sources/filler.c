@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:31:06 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:11:45 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 12:42:07 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ int		main(void)
 {
 	t_data	data;
 	t_piece	piece;
-	
+
 	init_data(&data);
 	while (data.turn == 0 ? 1 : skip_next_line(0))
 	{
@@ -25,8 +25,8 @@ int		main(void)
 		set_piece(&data, &piece);
 		play(&data);
 		(data.turn)++;
-		//free_piece(&piece);
+		free_piece(&piece);
 	}
-	//free_data(&data);
+	free_data(&data);
 	return (0);
 }

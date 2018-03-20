@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/08 15:36:40 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/13 12:27:29 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 12:42:49 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,7 @@ int		eval(t_data *d)
 		while (++x <= d->p2_max_x)
 		{
 			if ((d->map)[y][x] == d->p2)
-			{	
+			{
 				if ((dist = distance_nearest_p2(d, x, y)) < min_dist)
 					min_dist = dist;
 			}

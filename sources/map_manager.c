@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 17:42:27 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 16:13:08 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 17:27:03 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -75,7 +75,7 @@ void	set_map(t_data *data)
 		map[y] = ft_strdup(ft_strupcase(line + x));
 		set_player_position(data, map[y], y);
 		set_player_square(data, map[y], y);
-		//free(line);
+		free(line);
 	}
 	map[y] = NULL;
 	data->map ? free(data->map) : data->map;

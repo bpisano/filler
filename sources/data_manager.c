@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 13:45:05 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:17:08 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 12:41:54 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,7 +67,7 @@ void	set_player(t_data *data)
 		}
 		i++;
 	}
-	//free(line);
+	free(line);
 }
 
 void	set_board_size(t_data *data)
@@ -82,7 +82,7 @@ void	set_board_size(t_data *data)
 
 void	init_data(t_data *data)
 {
-	new_data(data);	
+	new_data(data);
 	set_player(data);
 	set_board_size(data);
 }

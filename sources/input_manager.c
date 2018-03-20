@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:05:58 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 21:31:21 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 12:33:59 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,8 +19,8 @@ int		skip_next_line(const int fd)
 	char	*line;
 
 	ret = get_next_line(fd, &line);
-	//if (ret != -1)
-		//free(line);
+	if (ret > 0)
+		free(line);
 	return (ret);
 }
 
@@ -38,5 +38,5 @@ void	read_parameters(int *p1, int *p2)
 		i++;
 	i++;
 	*p2 = ft_atoi(line + i);
-	//free(line);
+	free(line);
 }
