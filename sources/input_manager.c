@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 20:05:58 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/20 18:40:24 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 18:51:06 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ int		skip_next_line(const int fd)
 	char	*line;
 
 	ret = get_next_line(fd, &line);
-	if (ret != -1)
+	if (ret > 0)
 		free(line);
 	return (ret);
 }
